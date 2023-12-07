@@ -66,7 +66,7 @@ with open('30bus_topology.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
     rows = [row for row in reader]
     connection_all = np.array(rows[1:], dtype=float)
-
+start = time.time()
 A_mat = np.zeros((num_lines, num_buses), dtype=float)
 for i in range(num_lines):
     A_mat[i][int(connection_all[i][0])-1] = -1.0
@@ -177,7 +177,8 @@ print("Original load vector", load.T)
 print("Carbon emissions vector", carbon_vec.T)
 average_emission_rate = carbon_vec/load_vec
 print("Carbon emissions rate vector", average_emission_rate.T)
-
+end = time.time()
+print(end-start)
 
 
 
